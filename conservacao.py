@@ -41,9 +41,10 @@ def lerDados():
   nRow = sheet_obj.max_row
     
   valores=[]
-  for i in range(3, nRow + 1):
-    cell_obj = sheet_obj.cell(row = i, column = 4)
-    valores.append(cell_obj.value)
+  for i in range(4, nRow + 1):
+    cell_populacao = sheet_obj.cell(row = i, column = 5)
+    cell_nome = sheet_obj.cell(row = i, column = 4)
+    valores.append((cell_nome.value,int(cell_populacao.value)))
   
   return valores
 
@@ -58,7 +59,7 @@ def actionBtnQuickSort():
   saidaQuickSort.insert(tk.END, f"Tempo do QuickSort: {elapsed_time:.6f} segundos\n")
   saidaQuickSort.insert(tk.END, f"Dados Ordenados: {dados_ordenados}")
   for i in range(len(dados_ordenados)):
-     saidaQuickSort.insert(tk.END, f"Nome: Blablá Número: {dados_ordenados[i]}")
+     saidaQuickSort.insert(tk.END, f"Nome: {dados_ordenados[i][0]} População: {dados_ordenados[i][1]}")
 
 def actionBtnInsertionSort():
   array = lerDados()
@@ -66,7 +67,7 @@ def actionBtnInsertionSort():
   saidaInsertionSort.insert(tk.END, f"Tempo do InsertionSort: {tempo_insertion:.6f} segundos\n")
   saidaInsertionSort.insert(tk.END, f"Dados Ordenados: {dados_ordenados}")
   for i in range(len(dados_ordenados)):
-     saidaInsertionSort.insert(tk.END, f"Nome: Blablá Número: {dados_ordenados[i]}")
+     saidaInsertionSort.insert(tk.END, f"Nome: Blablá População: {dados_ordenados[i]}")
 
 # variáveis globais de tempo de cada algoritmo
 # criando a janela
