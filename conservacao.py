@@ -41,8 +41,8 @@ def lerDados():
   nRow = sheet_obj.max_row
     
   valores=[]
-  for i in range(2, nRow + 1):
-    cell_obj = sheet_obj.cell(row = i, column = 6)
+  for i in range(3, nRow + 1):
+    cell_obj = sheet_obj.cell(row = i, column = 4)
     valores.append(cell_obj.value)
   
   return valores
