@@ -9,7 +9,7 @@ def insertionSort(arr):
     for i in range(1, len(arr)):
         temp = arr[i]
         j = i - 1
-        while j >= 0 and temp[1] < arr[j][1]:
+        while j >= 0 and temp[0] < arr[j][0]:
             arr[j + 1] = arr[j]
             j -= 1
         arr[j + 1] = temp
@@ -21,11 +21,11 @@ def insertionSort(arr):
 
 def quicksort(arr):
     if len(arr) <= 1:
-      return arr
+        return arr
     else:
-        pivot = arr[0][1]
-        left = [x for x in arr[1:] if x[1] < pivot]
-        right = [x for x in arr[1:] if x[1] >= pivot]
+        pivot = arr[0][0]
+        left = [x for x in arr[1:] if x[0] < pivot]
+        right = [x for x in arr[1:] if x[0] >= pivot]
 
         return quicksort(left) + [arr[0]] + quicksort(right)
 
