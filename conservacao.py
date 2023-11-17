@@ -3,33 +3,31 @@ import openpyxl
 import tkinter as tk
 import time
 
-def insertionSort(a):
+def insertionSort(arr):
     start_time = time.time()
 
-    for i in range(1, len(a)):
-  
-        temp = a[i]
-  
-        j = i-1
-        while j >=0 and temp < a[j] :
-                a[j+1] = a[j]
-                j -= 1
-        a[j+1] = temp
+    for i in range(1, len(arr)):
+        temp = arr[i]
+        j = i - 1
+        while j >= 0 and temp[1] < arr[j][1]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = temp
 
     end_time = time.time()
     elapsed_time = end_time - start_time
-    return a, elapsed_time
+    return arr, elapsed_time
 
 
 def quicksort(arr):
     if len(arr) <= 1:
       return arr
     else:
-        pivot = arr[0]
-        left = [x for x in arr[1:] if x < pivot]
-        right = [x for x in arr[1:] if x >= pivot]
+        pivot = arr[0][1]
+        left = [x for x in arr[1:] if x[1] < pivot]
+        right = [x for x in arr[1:] if x[1] >= pivot]
 
-        return quicksort(left) + [pivot] + quicksort(right)
+        return quicksort(left) + [arr[0]] + quicksort(right)
 
 
 def lerDados():
@@ -57,17 +55,15 @@ def actionBtnQuickSort():
 
   # dados_ordenados = quicksort(array)
   saidaQuickSort.insert(tk.END, f"Tempo do QuickSort: {elapsed_time:.6f} segundos\n")
-  saidaQuickSort.insert(tk.END, f"Dados Ordenados: {dados_ordenados}")
   for i in range(len(dados_ordenados)):
-     saidaQuickSort.insert(tk.END, f"Nome: {dados_ordenados[i][0]} População: {dados_ordenados[i][1]}")
+     saidaQuickSort.insert(tk.END, f"Nome: {dados_ordenados[i][0]} | População: {dados_ordenados[i][1]}")
 
 def actionBtnInsertionSort():
   array = lerDados()
   dados_ordenados, tempo_insertion = insertionSort(array)
   saidaInsertionSort.insert(tk.END, f"Tempo do InsertionSort: {tempo_insertion:.6f} segundos\n")
-  saidaInsertionSort.insert(tk.END, f"Dados Ordenados: {dados_ordenados}")
   for i in range(len(dados_ordenados)):
-     saidaInsertionSort.insert(tk.END, f"Nome: Blablá População: {dados_ordenados[i]}")
+     saidaInsertionSort.insert(tk.END, f"Nome: {dados_ordenados[i][0]} | População: {dados_ordenados[i]}")
 
 # variáveis globais de tempo de cada algoritmo
 # criando a janela
